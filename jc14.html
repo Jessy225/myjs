@@ -1,0 +1,76 @@
+<script>
+    //陣列寫法 增加456的機會為一般數字兩倍
+    let p1 = [0,0,0,0,0,0,0]
+    for(let i=0; i<100 ; i++){
+        let rand = parseInt(Math.random() * 9)+1; // 0-9
+        p1[rand<=6?rand:rand-3]++; //RAN小於等於6 用原來的rand ; 超過6 則把 rand-3
+    }
+    for(let i=1; i<p1.length ; i++){
+        document.write(`${i} : ${p1[i]} times<br>`);
+    }
+    document.write('<hr>');
+</script>
+
+
+<script>
+    //陣列寫法
+    let p = [0,0,0,0,0,0,0]
+    for(let i=0; i<100 ; i++){
+        let rand = parseInt(Math.random() * 6)+1; // 0-5
+        p[rand]++;
+    }
+
+    for(let i=1; i<p.length ; i++){
+        document.write(`${i} : ${p[i]} times<br>`);
+    }
+
+    document.write('<hr>');
+</script>
+
+
+
+<script>
+    //switch寫法
+
+        let cnt1,cnt2,cnt3,cnt4,cnt5,cnt6 ;
+        cnt1 = cnt2 = cnt3 = cnt4 = cnt5 = cnt6 = 0;
+
+        /* //同以上let 宣告方式
+        let cnt1  = 0;
+        let cnt2  = 0;
+        let cnt3  = 0;
+        let cnt4  = 0;
+        let cnt5  = 0;
+        let cnt6  = 0; */
+        
+        for (let i =0; i < 100; i++){
+            let rand = parseInt(Math.random() * 6)+1; //自動亂數帶入1-6
+            switch(rand) {
+                case 1:
+                    /*
+                    let cnt1 = cnt1+1;
+                    break;
+                    */
+                    cnt1++; break;
+                case 2:
+                    cnt2++; break;
+                case 3:
+                    cnt3++; break;
+                case 4:
+                    cnt4++; break;
+                case 5:
+                    cnt5++; break;
+                case 6:
+                    cnt6++; break;
+            }
+        }
+        document.write(`1: ${cnt1} times<br>`);
+        document.write(`2: ${cnt2} times<br>`);
+        document.write(`3: ${cnt3} times<br>`);
+        document.write(`4: ${cnt4} times<br>`);
+        document.write(`5: ${cnt5} times<br>`);
+        document.write(`6: ${cnt6} times<br>`);
+    </script>
+
+
+
