@@ -1,0 +1,22 @@
+<script>
+let a = 123;
+document.write(typeof(a) + "<br>");
+a = String(a);
+document.write(typeof(a) + ":"+ a + "<br>");
+//印出 number string:123
+
+
+//let b = true; //印出 boolean boolean:true
+let b = false; //印出 boolean boolean:false
+document.write(typeof(b) + "<br>");
+a = String(b);
+document.write(typeof(b) + ":"+ b + "<br>");
+
+//let c = '123';  //印出 number:123
+//let c = 'JC'; //印出 number:NaN
+//let c = ''; //印出 錯誤 Uncaught SyntaxError: Invalid regular expression: missing /
+let c = false //印出 number:0
+c = Number(c);
+document.write(typeof(c) + ":"+ c + "<br>");
+
+</script>
