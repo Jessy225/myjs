@@ -1,0 +1,28 @@
+//background yellow pink yellow pink 
+
+<table border="1" width="100%" >
+        <script>
+        let row = 3    //表格列數
+        let start = 1; //起始數字
+        let nTd = 3;   //一列幾個td
+
+        for (let k = 0; k < row ; k++){
+            document.write("<tr>");
+            for (let j = start; j < (start+nTd) ; j++){
+                if ((j+k) % 2 == 0){
+                    document.write("<td bgcolor='pink'>");
+                }else{
+                    document.write("<td bgcolor='yellow'>");
+                }
+
+                for (let i = 1; i <= 9 ; i++){
+                    let newj = j + k * nTd;   // 2 3 4 5  << 排序每行4個 所以 k*4 (nTd) 或者可以搬到迴圈外
+                    let r = j * i;            // 6 7 8 9 
+                    document.writeln(`${newj} X ${i} = ${r}<br> `);
+                }
+                document.write("</td>");
+            }
+            document.write("</tr>");
+        }
+        </script>
+</table>

@@ -1,0 +1,29 @@
+//background yellow pink yellow pink (Teacher way)
+
+<table border="1" width="100%" >
+        <script>
+        let row = 3    //表格列數
+        let start = 1; //起始數字
+        let nTd = 3;   //一列幾個td
+
+        for (let k = 0; k < row ; k++){
+            document.write("<tr>");
+            for (let j = start; j < (start+nTd) ; j++){
+                let newj = j + k * nTd;
+                let isPink;
+                if (nTd % 2 == 0 ){
+                    isPink = (newj + k) % 2 == 0;
+                }else{
+                    isPink = (newj) % 2 == 0;
+                }
+                document.write("<td bgcolor='" + (isPink?"pink":"yellow")+"'>");                  
+                for (let i = 1; i <= 9 ; i++){
+                    let r = j * i;           
+                    document.writeln(`${newj} X ${i} = ${r}<br> `);
+                }
+                document.write("</td>");
+            }
+            document.write("</tr>");
+        }
+        </script>
+</table>
