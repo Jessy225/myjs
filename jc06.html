@@ -1,0 +1,26 @@
+<script>
+        //詢問輸入的動作 prompt
+        //let year = prompt("year ?");
+
+
+        function doThing(){
+            let year = document.getElementById("year").value;
+            //year = parseInt(year);
+            let isOK = false;
+            if (year % 400 == 0) {
+                isOK = true;
+            } else if (year % 100 == 0) {
+                isOK = false;
+            } else if (year % 4 == 0) {
+                isOK = true;
+            } else {
+                isOK = false;
+            } 
+            document.getElementById("result").innerHTML  =
+                isOK?'閏年':'不閏年'
+        }
+</script>
+
+<input type = "number" id ="year" />
+<input type = "button" value ="click" onclick="doThing()" />
+<span id="result"></span>

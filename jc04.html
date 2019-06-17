@@ -1,0 +1,35 @@
+<script>
+    function doCal(){
+        let x= document.getElementById("x").value;
+        let y= document.getElementById("y").value;
+        // alert(y); 檢查用
+        let result = document.getElementById("result");
+
+        // 文件內都是字串 結果為 10 + 3 = 103
+        // let z = x + y;
+
+        //轉換成int
+        x = parseInt(x);
+        y = parseInt(y);
+        let z = x + y
+        result.innerHTML = z ;
+
+        //取除數與餘數
+        let z1 = parseInt(x / y);
+        let z2 = x % y;
+        result.innerHTML = z1 + "......" + z2 ;
+
+    }
+</script>
+
+<input type = "number" id ="x" />
+<select>
+    <option>+</option>
+    <option>-</option>
+    <option>*</option>
+    <option>/</option>
+</select>
+<input type = "number" id ="y" />
+<input type = "button" value ="=" onclick="doCal()" />
+
+<span id="result">JC</span>

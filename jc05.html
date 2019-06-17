@@ -1,0 +1,27 @@
+<script>
+    //詢問輸入的動作 prompt
+    //let score = prompt("Score ?");
+
+    //自動亂數帶入
+    let score = Math.random();  // 0.0 <= x < 1.0
+    let score1 = parseInt(score * 101); //0-100有101個數字
+    document.write(score1);
+
+    //方法一
+    if (score1 < 60) {
+        document.write('E');
+    } else if (score1 < 70) {
+        document.write('D');
+    } else if (score1 < 80) {
+        document.write('C');
+        score1 = 50;
+    } else if (score1 < 90) {
+        document.write('B');
+    } else if (score1 >= 90) {
+        document.write('A');
+    }
+
+    document.write('<hr>');
+    document.write(score1);
+
+</script>
