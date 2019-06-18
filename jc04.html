@@ -12,26 +12,27 @@
         // let z = x + y;
 
         //轉換成int
-        let z;
+
         x = parseInt(x);
         y = parseInt(y);
-        z = parseInt(z);
-
+   
         //switch 必須相同型別才相等
-        switch(opVal){
-            case 0:  z = parseInt(x + y);
-            case 1:  z = parseInt(x - y);
-            case 2:  z = parseInt(x * y);
-            case 3:  z = parseInt(x / y);
+        switch (opVal) {
+            case 0:
+                result.innerHTML = x + y;//抓取需要的元素
+                break;
+            case 1:
+                result.innerHTML = x - y;
+                break;
+            case 2:
+            result.innerHTML = x * y;
+                break;
+            case 3:
+                let z1 = parseInt(x / y);//parseInt 轉成整數
+                let z2 = x % y;
+                result.innerHTML = z1 + "......" + z2;
+                break;
         }
-        result.innerHTML = z ;
-
-        /*
-        //取除數與餘數
-        let z1 = parseInt(x / y);
-        let z2 = x % y;
-        result.innerHTML = z1 + "......" + z2 ;
-        */
     }
 </script>
 

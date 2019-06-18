@@ -1,4 +1,6 @@
-//檢查身分證字號
+//js目的 獨立變數 避免外部呼叫時誤用
+
+//used in jc23.html 檢查身分證字號
 function checkTWId(id){
     let ret = false;
     //正規表示碼處理檢查的部分
@@ -8,7 +10,7 @@ function checkTWId(id){
     //let regex = /[ABC]/g;  // let id = 'AA23456789' +g 全域變數  print: AA
     //let regex = /[A-Z]/g;  // let id = 'AA23456789' +g 全域變數  print: AA
     //let regex = /^[A-Z]/g; // let id = 'AA23456789' +g 全域變數  print: A ;let id = '0A23456789'
-    
+
     //id ='11,22,33,44,af,a44,333';
     //let regex = /[0-9]{1,5}/g; +g 全域變數  print: none ; ^[]首字元
     let regex = /^[A-Z][12][0-9]{8}$/; //第一碼A-Z; 第二碼1or2; 之後8碼 0-9; $結尾符號 共10碼
@@ -36,3 +38,46 @@ function checkTWId(id){
     }
     return ret;
 }
+
+
+//used in guessnumber.html 
+//預設 產生三位數字 ; 變數生命範圍僅在此js敘述句中 外圈呼叫時不會誤用
+function createAnswer(n = 3){
+    let poker = [];
+    for (let i=0 ; i<10 ; i++) poker[i] = i;
+    for (let i=poker.length-1 ; i>0; i--){
+        let rand = parseInt(Math.random()*(i+1)); 
+        [poker[i],poker[rand]] = [poker[rand],poker[i]] ; 
+    }
+    let ret = '';
+    for (let i=0; i<n; i++) ret += poker[i];
+    return ret;
+
+}
+
+//檢查?A?B
+function checkAB(ans, gus){
+    let a=0, b=0;
+    for (let i = 0 ; i< gus.length; i++){
+        if (gus.charAt(i) == ans.charAt(i)){ //檢查gus的第i碼是否等於ans的第i碼
+            a++;
+        }else if (ans.indexOf(gus.charAt(i)) >= 0){ //檢查gus的i碼是否存在ans中
+            b++;
+        }
+    }
+    return a + 'A' + b + 'B';
+}
+
+
+function reset(){
+    let a=0, b=0;
+    for (let i = 0 ; i< gus.length; i++){
+        if (gus.charAt(i) == ans.charAt(i)){
+            a++;
+        }else if (ans.indexOf(gus.charAt(i)) >= 0){
+            b++;
+        }
+    }
+    return a + 'A' + b + 'B';
+}
+

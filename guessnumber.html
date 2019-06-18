@@ -1,0 +1,78 @@
+
+<script src="jcapis.js"></script>
+<script>
+//猜數字遊戲
+
+//謎底 ,產生 3碼
+let answer = createAnswer(3);
+console.log(answer); //除錯用 ;於開發人員工具中可會記錄answer
+let log = '';
+let times = 0;
+
+//輸入的數字 log紀錄
+function doGuess(){
+    times++; //紀錄執行幾次
+    let guess = document.getElementById('guess').value;
+    let result = checkAB(answer, guess);
+    //猜對數字則顯示 Winner
+    if(result == '3A0B'){
+        alert('Winner!');
+        reset();
+    }else if(times == 5){ //紀錄執行5次之後會重置數字,並公布答案
+        alert('Loser! The answer is ' + answer);
+        reset();
+    }else{
+        alert(result);
+    }
+
+    log += guess + " => " + result + "<br>";
+    document.getElementById('log').innerHTML = log;
+    document.getElementById('guess').value = '';
+    document.getElementById('guess').focus();
+}
+
+//清除欄位資料
+function reset(){
+    if (!confirm('Reset?')) return;
+    
+    //重置答案
+    times = 0;
+    answer = createAnswer(3);
+    console.log('reset:'+answer); //除錯用 ;於開發人員工具中可會記錄answer
+
+    //清空log資料
+    log = '';
+    document.getElementById('log').innerHTML = log;
+    document.getElementById('guess').value = '';
+    document.getElementById('guess').focus();
+}
+
+function resetNoAsk(){
+    //重置答案
+    times = 0;
+    answer = createAnswer(3);
+    console.log('reset:'+answer); //除錯用 ;於開發人員工具中可會記錄answer
+
+    //清空log資料
+    log = '';
+    document.getElementById('log').innerHTML = log;
+    document.getElementById('guess').value = '';
+    document.getElementById('guess').focus();
+}
+</script>
+
+<h1>Guess Number Game</h1>
+<hr>
+<input type="number" id = "guess" />
+<input type="button" onclick="doGuess()" value="Guess"  />
+<input type="button" onclick="reset()" value="Reset"  />
+
+number:
+<select>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+</select>
+<hr>
+<div id='log'> </div>
+

@@ -1,0 +1,25 @@
+<script>
+let counter = 0;
+let run =false ;
+let timer;
+
+//每一秒做一次doThings function
+function go(){
+    timer = setInterval(doThings, 1*1000);
+}
+
+//執行一次就會記錄counter一次
+function doThings(){
+    document.getElementById('counter').innerHTML =  counter++;
+}
+
+//執行一次就會記錄counter一次
+function stopGame(){
+    clearInterval(timer);
+}
+
+</script>
+Timer : <span id="counter"></span>
+<hr>
+<input type="button" onclick="go()" value="Go!" />
+<input type="button" onclick="stopGame()" value="StopGame"  />
