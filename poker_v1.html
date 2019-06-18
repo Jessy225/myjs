@@ -1,0 +1,29 @@
+<script>
+        //撲克牌洗牌 共6張牌 
+        //延伸用法 for...while 
+        //do...while vs for
+        //do每次先執行; for 有可能一次也沒執行到 (eg.第一次執行時 for判斷重複那句就不會做到)
+
+        let poker = [];
+        let rand;       //把rand提出來 for後續判斷式中可使用 (原僅在do中可使用)
+        let isRepeat;   //把isRepeat提出來宣告
+        for(let i=0 ; i<6; i++){
+            //先做判斷式
+            do{
+                rand = parseInt(Math.random()*6); //0-5 6張牌只要洗5次
+                //check exists 把自身跟前面的資料比對
+                isRepeat = false;
+                for(let j=0; j<i ; j++){
+                    if (poker[j] == rand){
+                        isRepeat = true;
+                        break;
+                    }
+                }
+            }while(isRepeat);
+            poker[i] = rand;
+        }
+        for(let i in poker){
+            document.write(poker[i] + "<br>");
+        }
+
+</script>

@@ -1,0 +1,54 @@
+<script>
+let a= [0,1,2,3,4,5];
+
+ a[8] = 8;
+
+//較有順序性;如未定義會有 undefined
+for (let i=0; i<a.length; i++) document.write(a[i] + "<br>");
+document.write("<br>");
+/*
+印出:
+0
+1
+2
+3
+4
+5
+undefined
+undefined
+8
+
+*/
+
+//不保證順序性
+for (let i in a) document.write(a[i] + "<br>");
+document.write("<br>");
+/*
+印出:
+0
+1
+2
+3
+4
+5
+8
+
+*/
+
+
+//v 尋訪a中的值;如未定義會有 undefined
+for (let v of a ) document.write(v + "<br>");
+/*
+印出:
+0
+1
+2
+3
+4
+5
+undefined
+undefined
+8
+
+*/
+</script>

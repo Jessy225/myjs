@@ -1,0 +1,27 @@
+<script> 
+//數字交換順序練習 
+
+let a = 10, b=3;
+document.write(`a = ${a} ; b = ${b} <br>`);
+
+/* 
+//way1
+let c = a; //先把a放到c
+a = b;
+b = c; 
+*/
+
+/* 
+//way2
+a = a+b;
+b = a-b;
+a = a-b;
+*/
+
+//way3
+[a, b] = [b, a]
+
+document.write(`a = ${a} ; b = ${b}`);
+
+
+</script>

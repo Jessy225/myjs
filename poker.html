@@ -1,16 +1,21 @@
 <script>
+//撲克牌洗牌
 let poker = [];
 for(let i=0 ; i<52; i++){
-    let rand = parseInt(Math.random()*52);
-    //check exists
+    let rand = parseInt(Math.random()*52); //0-51 52張牌只要洗51次
+    //check exists 把自身跟前面的資料比對
+    let isRepeat = false;
     for(let j=0; j<i ; j++){
         if (poker[j] == rand){
-        // if exists
-            continue;
-        }else{
-            poker[i] = rand; 
+            isRepeat = true;
+            break;
         }
     }
+    if (isRepeat){
+        i--; //i-- 為了重跑一次
+        continue;
+    }
+    poker[i] = rand;
 }
 for(let i in poker){
     document.write(poker[i] + "<br>");
