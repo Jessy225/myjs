@@ -1,0 +1,19 @@
+<script src="jcapis.js">
+</script>
+
+<script>
+    //校驗 ID
+    function ckId(){
+        let id = document.getElementById('id').value;
+        let isRight = checkTWId(id);
+        //false
+        if(!isRight){
+            alert('XX');
+        }else{
+            alert('OK');
+        }
+    }
+</script>
+
+<input type="text" id="id" />
+<input type="button" onclick="ckId()" value='Check' />

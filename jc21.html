@@ -38,5 +38,16 @@
     Ya! b 
     Ya! c  */
 
+    //直接命名function
+    let f1 = function(x,y){
+        return 2*x + y;
+    }
  
+    let v1 = f1(2,3);
+    document.write(v1);
+
+    //f2同於 f1處理
+    let f2 = f1;
+    v1 = f2(2,3);
+    document.write(v1);
 </script>
