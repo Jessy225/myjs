@@ -1,0 +1,48 @@
+<script>
+
+/*
+//後測試迴圈
+do{
+}while(Boolean);
+
+//前測試迴圈
+let i =0;
+while(i<10){
+    document.write(i++ + "<br>");
+}
+//print
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+*/
+
+function calcSum(){
+    let i =0 ,sum=0;
+    let n= document.getElementById("n").value;
+    let result = document.getElementById("result");
+
+    while(i<=n) sum += i++;
+    document.getElementById("result").innerHTML =sum;
+
+    /* 
+    while(i<=n){
+        sum = sum + i;
+        i++;
+        document.getElementById("result").innerHTML =sum;
+    }*/
+    
+}
+</script>
+
+1 + 2 + ... +
+<input type="number" id ="n" />
+<input type="button" value="=" onclick ="calcSum()" />
+<span id="result"></span>

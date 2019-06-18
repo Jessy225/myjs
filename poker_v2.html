@@ -27,6 +27,8 @@
             document.write(players[i] + "<br>");
         }
 
+        document.write("<br><hr>");
+
 /*印出 假設共 8張牌
 4
 6
@@ -44,3 +46,17 @@ _________
 */
 
 </script>
+<table width="100%" border="1" style="border-collapse: collapse">
+        <script>
+            //尋訪 : 以表格紀錄各家的牌  
+            for(let player of players){
+                document.write("<tr>");
+                for (let card of player){
+                    document.write("<td>");
+                    document.write(card);
+                    document.write("</td>");
+                }
+                document.write("</tr>");
+            }
+        </script>
+</table>

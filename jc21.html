@@ -1,0 +1,42 @@
+<script>
+    //function 命名規則 :動詞 介係詞 小寫
+    function sayYaV2(name = 'World'){
+        document.write(`Ya! ${name} <br>`);
+    }
+
+    function sayYa(ns){
+        for (let name of ns){
+            document.write(`Ya! ${name} <br>`);
+        }
+    }
+
+
+    function sayYaV3(...names){
+        //Array.isArray(names) -> check is array or not
+        //document.write(typeof(names) + Array.isArray(names) + "<br>");
+        for (let name of names){
+            document.write(`Ya! ${name} <br>`);
+        }
+    }
+
+    let names = ['Katie','Frank','Sean']; //陣列傳入
+    sayYa(names);
+    /* print:
+    Ya! Katie 
+    Ya! Frank 
+    Ya! Sean */
+
+    sayYaV2(); //print: Ya! World 
+    sayYaV2('JC');//print: Ya! JC
+    
+    sayYaV3();
+    sayYaV3('A');
+    sayYaV3('a','b','c');
+    /* print:
+    Ya! A 
+    Ya! a 
+    Ya! b 
+    Ya! c  */
+
+ 
+</script>

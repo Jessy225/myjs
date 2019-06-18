@@ -1,0 +1,47 @@
+&spades;<hr> <!♠>
+&hearts;<hr> <!♥>
+&diam;<hr> <!⋄>
+&clubs;<hr> <!♣>
+
+
+<script>
+    //延伸 撲克牌花色與數字呈現
+        let poker = [];
+        for (let i=0 ; i<52 ; i++) poker[i] = i;
+        for(let i=poker.length-1 ; i>0; i--){
+            let rand = parseInt(Math.random()*(i+1)); 
+            [poker[i],poker[rand]] = [poker[rand],poker[i]] ; 
+        }
+        document.write("<hr>");
+        let players = [[],[],[],[]];
+
+        for (let i=0 ; i<poker.length; i++){
+            players[i%4][parseInt(i/4)] = poker[i] ;
+        }
+</script>
+
+<table width="100%" border="1" style="border-collapse: collapse">
+        <script>
+            let suits = ['&spades;','&hearts;','&diam;','&clubs;'];
+            let nums = ['A',2,3,4,5,6,7,8,9,10,'J','Q','K'];
+            for(let player of players){
+                player.sort(function(a,b){return a-b;}); //按照花色數字排序
+                document.write("<tr>");
+                for (let card of player){ 
+                    //針對紅心、方塊呈現紅色
+                    if (parseInt(card/13) ==1 || parseInt(card/13) == 2 ){ 
+                        //css設定紅色
+                        document.write("<td style='color:red'>");
+                    }else{
+                        //css設定黑色
+                        document.write("<td style='color:black'>");
+                    }
+                    //suits[parseInt(card/13)] 花色用牌分成13取商 區分花色
+                    //nums[card%13] 取餘數
+                    document.write(suits[parseInt(card/13)] + nums[card%13]);
+                    document.write("</td>");
+                }
+                document.write("</tr>");
+            }
+        </script>
+</table>

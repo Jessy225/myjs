@@ -1,5 +1,8 @@
 <script>
     function doCal(){
+        let op= document.getElementById("op");
+        let opVal = op.selectedIndex; //取得設定的值
+
         let x= document.getElementById("x").value;
         let y= document.getElementById("y").value;
         // alert(y); 檢查用
@@ -9,21 +12,31 @@
         // let z = x + y;
 
         //轉換成int
+        let z;
         x = parseInt(x);
         y = parseInt(y);
-        let z = x + y
+        z = parseInt(z);
+
+        //switch 必須相同型別才相等
+        switch(opVal){
+            case 0:  z = parseInt(x + y);
+            case 1:  z = parseInt(x - y);
+            case 2:  z = parseInt(x * y);
+            case 3:  z = parseInt(x / y);
+        }
         result.innerHTML = z ;
 
+        /*
         //取除數與餘數
         let z1 = parseInt(x / y);
         let z2 = x % y;
         result.innerHTML = z1 + "......" + z2 ;
-
+        */
     }
 </script>
 
 <input type = "number" id ="x" />
-<select>
+<select id="op" >
     <option>+</option>
     <option>-</option>
     <option>*</option>
