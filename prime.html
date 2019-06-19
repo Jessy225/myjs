@@ -1,0 +1,33 @@
+<h2>1-100 數值中有底色為質數 </h2>
+<table width="100%" border="1" style="text-align:center;  border:#FAD78A double;padding:5px;" >
+    <tr>
+        <script>
+            for (let n = 1; n < 101; n++) {
+                //判斷是否為質數
+                let isPrime = true;
+                if (n == 1) isPrime = false;
+                for (let j = 2; j < parseInt(n); j++) {
+                    if (parseInt(n % j) == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    //質數css設定紅色
+                    document.write("<td bgcolor='#FAD78A' >");
+                } else {
+                    //質數css設定黑色
+                    document.write("<td >");
+                }
+
+                document.write(n);
+                document.write("</td>");
+                //每10個數字斷行
+                if (parseInt(n % 10) == 0){
+                    document.write("</tr>");
+                    document.write("<tr>");
+                }
+            }
+        </script>
+    </tr>
+</table>

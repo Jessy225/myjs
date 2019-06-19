@@ -25,7 +25,7 @@
                 result.innerHTML = x - y;
                 break;
             case 2:
-            result.innerHTML = x * y;
+                result.innerHTML = x * y;
                 break;
             case 3:
                 let z1 = parseInt(x / y);//parseInt 轉成整數
@@ -36,14 +36,14 @@
     }
 </script>
 
-<input type = "number" id ="x" />
-<select id="op" >
+<input type="number" id="x" />
+<select id="op">
     <option>+</option>
     <option>-</option>
     <option>*</option>
     <option>/</option>
 </select>
-<input type = "number" id ="y" />
-<input type = "button" value ="=" onclick="doCal()" />
+<input type="number" id="y" />
+<input type="button" value="=" onclick="doCal()" />
 
 <span id="result">JC</span>
