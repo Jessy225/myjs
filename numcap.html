@@ -1,0 +1,55 @@
+<script>
+    //數字大寫轉換
+    function doTrans() {
+        let num = document.getElementById("num").value;
+        let result = document.getElementById("result");
+        let res ="";
+        let str = ['零','壹','貳','參','肆','伍','陸','柒','捌','玖','拾','佰','仟','萬','億']
+
+        for (let i = 0; i < num.length; i++) {
+            //計算位數 增加金額位數說明
+            switch (num.length-i) {
+                case 1:  res = res + str[num[i]]; break;
+                case 2:  res = res  + str[num[i]] + str[10]; break;   //拾
+                case 3:  res = res  + str[num[i]] + str[11]; break;   //佰
+                case 4:  res = res  + str[num[i]] + str[12]; break;   //仟     
+                case 5:  res = res  + str[num[i]] + str[13]; break;   //萬
+                case 6:  res = res  + str[num[i]] + str[10]; break;   //拾萬
+                case 7:  res = res  + str[num[i]] + str[11]; break;   //佰萬
+                case 8:  res = res  + str[num[i]] + str[12]; break;   //仟萬
+                case 9:  res = res  + str[num[i]] + str[14]; break;   //億
+                case 10: res = res  + str[num[i]] + str[10]; break;   //拾億
+                case 11: res = res  + str[num[i]] + str[11]; break;   //佰億
+                case 12: res = res  + str[num[i]] + str[12]; break;   //仟億
+            }
+        }
+        result.innerHTML = "<br>" + res ; 
+        document.getElementById('num').focus();
+    }
+</script>
+
+
+<script>
+//清除欄位資料
+function reset(){
+    document.getElementById('num').innerHTML = '';
+    document.getElementById('num').value = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('num').focus();
+}
+</script>
+
+
+<font face="微軟正黑體">
+<h2>數字大寫轉換</h2>
+<hr>
+<!-- <input type="number" id="num" /> 可輸入小數點-->
+<input type="number" id="num" 
+    onkeyup="this.value=this.value.replace(/\D/g,'')" 
+    onafterpaste="this.value=this.value.replace(/\D/g,'')">
+
+<input type="button" onclick="doTrans()" value="轉換" />
+<input type="button" onclick="reset()" value="清除" />
+<br>
+<span id="result" ></span>
+</font>

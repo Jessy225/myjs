@@ -1,0 +1,98 @@
+<script>
+    function genID() {
+        let areaVal = document.getElementById("area").selectedIndex; //取得戶籍地設定的值
+        let genderVal = chooseGender(); //取得性別設定的值
+        let chk = "";
+
+        // let letter = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
+        // let c12 = id.substr(0,1); A
+        // let n12 = letter.indexOf(c12) +10;
+
+        
+        //let rand = parseInt(Math.random()*10); 
+        let gennum = [];
+        let rand;  
+        var Str = "";
+        for (let i =0 ; i<8; i++){
+            let rand =parseInt(Math.random()*10);
+            //gennum[i] = rand;
+            Str = Str + rand;
+        }
+        console.log(gennum.toString().split(","));
+        console.log(Str);
+
+        // //亂數產生8碼數字
+        // for(let i=0 ; i<6; i++){
+        //     //先做判斷式
+        //     do{
+        //         rand = parseInt(Math.random()*6); //0-5 6張牌只要洗5次
+        //         //check exists 把自身跟前面的資料比對
+        //         isRepeat = false;
+        //         for(let j=0; j<i ; j++){
+        //             if (poker[j] == rand){
+        //                 isRepeat = true;
+        //                 break;
+        //             }
+        //         }
+        //     }while(isRepeat);
+        //     poker[i] = rand;
+        // }
+        // result.innerHTML = "<br>" + res ; 
+        // document.getElementById('num').focus();
+    }
+</script>
+
+
+<script>
+//取得性別資料
+function chooseGender(){
+    let gender = 1; //male
+    if (document.getElementsByName("gender")[1].checked){
+        gender = 2; //female
+    }
+    return gender;
+}
+</script>
+
+        
+<font face="微軟正黑體"><h2>身分證產生器</h2>
+<hr>
+
+<p>請選擇以下資訊，點選"產生"，將隨機產生一組身分證字號：</p>
+<p>性別：
+<!-- 使用name="gender" 規範兩個值都在同一個group -->
+<input type="radio" id="male" name="gender" value="male"> 男
+<input type="radio" id="female" name="gender" value="female"> 女</p>
+
+<p>戶籍地：
+<select id="area">
+    <option value="A">臺北市</option>
+    <option value="B">臺中市</option>
+    <option value="C">基隆市</option>
+    <option value="D">臺南市</option>
+    <option value="E">高雄市</option>
+    <option value="F">新北市</option>
+    <option value="G">宜蘭縣</option>
+    <option value="H">桃園市</option>
+    <option value="J">新竹縣</option>
+    <option value="K">苗栗縣</option>
+    <option value="M">南投縣</option>
+    <option value="N">彰化縣</option>
+    <option value="P">雲林縣</option>
+    <option value="Q">嘉義縣</option>		
+    <option value="T">屏東縣</option>
+    <option value="U">花蓮縣</option>
+    <option value="V">臺東縣</option>
+    <option value="X">澎湖縣</option>
+    <option value="W">金門縣</option>
+    <option value="Z">連江縣</option>
+    <option value="I">嘉義市</option>
+    <option value="O">新竹市</option>
+</select>
+</p>
+
+<input type="button" onclick="genID()" value="產生" />
+
+<br>
+<span id="result"><br>ANS</span>
+</font>
