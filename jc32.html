@@ -1,0 +1,36 @@
+<script>
+//異常處理機制
+
+    function test1(){
+        let n = parseInt(Math.random()*101);
+        document.write(n + "<br>");
+
+        //捕捉錯誤訊息
+        try{
+            test2(n);
+            document.write("everything is okay! <br>");
+        }catch(e){ //若捕捉到錯誤, 執行的處理
+            document.write('fine. <br>');
+            return;
+        }finally{ //不管try catch判斷是否有做return 都會做finally
+            document.write('finally. <br>');
+        }
+
+        //for測試資料有沒有跑到這段,若沒有做try{}catch{},則會出現錯誤log不會往下跑到這段
+        //catch中如果提早做 return;  該段不會執行到
+        document.write("finish."); 
+    }
+
+    function test2(a){
+        if(a>=60){
+            document.write("test2, OK <br>");
+        }else{
+            throw "Oops!";
+        }
+    }
+
+
+</script>
+
+<input type="button" value="test" onclick="test1()" />
+

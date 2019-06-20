@@ -4,10 +4,10 @@
         let genderVal = chooseGender(); //取得性別設定的值
         let chk = "";
 
-        // let letter = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
-        // let c12 = id.substr(0,1); A
-        // let n12 = letter.indexOf(c12) +10;
-
+        let letter = 'ABCDEFGHJKLMNPQRSTUVXYWZIO';
+        let n12 = letter.indexOf(areaVal) +10;
+        chk = n12 + genderVal;
+        console.log(chk);
         
         //let rand = parseInt(Math.random()*10); 
         let gennum = [];

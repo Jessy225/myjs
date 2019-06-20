@@ -1,0 +1,22 @@
+<script>
+let a1 = [];
+a1['name'] = 'JC'
+a1['age'] = 101;
+a1['eat'] = function(){
+    document.write(this.name + " is getting food.<hr>")
+}
+a1.eat();
+
+function test1(){
+    let aa = 123;
+    let bb = 'JC';
+    let cc = 12.3;
+    return [aa,bb,cc];
+}
+
+//獨立變數存放function回傳值
+let [x,y,z] = test1();
+document.write(x+ ":" + y + ":" + z + "<hr>"); 
+
+
+</script>

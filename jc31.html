@@ -1,0 +1,29 @@
+<script>
+//直接賦予物件的方法 let x = {}
+//視為樣本
+let person = {
+    name: 'JC',
+    age: 101,
+    getInfo: function(){
+        return this.name + ":" + this.age;
+    }
+};
+
+let peter = {
+    name: 'Peter',
+    age: 20
+};
+
+let tony = {
+    name: 'Tony',
+    age: 24
+};
+
+//透過person樣本,取傳入變數的資料 getInfo.call()
+document.write(person.getInfo.call(peter)+"<br>");
+    //print: Peter:20
+
+document.write(person.getInfo.call(tony));
+    //print: Tony:24
+
+</script>

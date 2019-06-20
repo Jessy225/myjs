@@ -1,0 +1,31 @@
+
+<!-- select 的name 用於與後端程式(php, .net...等)傳遞的參數  -->
+<select name="textAlign" id="textAlign" onchange="chAlign()"> 
+    <option value="">Default</option>
+    <option value='left'>Left</option>
+    <option value='right'>Right</option>
+    <option value='center'>Center</option>
+</select>
+
+<input type="button" value="test" onclick="test()" />
+<!-- 文件架構區塊 span不會換列;div區塊較大 -->
+<div id='mytext' style='text-align:center'>Hello, World</div>
+
+
+<script>
+    // show出哪些參數可以用
+    function test(){
+        let mytext = document.getElementById('mytext');
+        for(let key in mytext.style){
+            console.log(key+":"+mytext[key]);
+        }
+    }
+
+    // onchange 執行對齊控制
+    function chAlign(){
+        let mytext = document.getElementById('mytext');
+        let style = document.getElementById('textAlign');
+        mytext.style[style.name] = style.value;   //指定name屬性丟入value值
+    }
+
+</script>

@@ -1,0 +1,93 @@
+<script>
+//不透過html 創建元素達到相同效果
+
+//創建元素
+let body = document.createElement('body');
+document.body = body;
+
+//創建標籤
+let head = document.createElement('h1');
+head.innerHTML = "JC Big Company";
+document.body.appendChild(head);
+//print: JC Big Company (h1格式的效果)
+
+//創建文字節點
+let h1text = document.createTextNode('Hello, World');
+head.appendChild(h1text);
+document.body.appendChild(head);
+h1text.textContent = "Hello, JC"; //指定節點的文字內容
+//print: Hello, JC
+
+//分隔線
+let hr = document.createElement('hr');
+document.body.appendChild(hr);
+
+
+//標籤效果 
+/* <ul></ul>與順序無關 ;<ol></ol> :步驟,順序有關
+同 html:
+<ul>
+    <li>11111</li>
+    <li>11111</li>
+    <li>11111</li>
+</ul>
+
+
+let ul = document.createElement('ul');
+document.body.appendChild(ul);
+let li = document.createElement('li');
+li.innerHTML = '11111'
+let li2 = document.createElement('li');
+li2.innerHTML = '11111'
+let li3 = document.createElement('li');
+li3.innerHTML = '11111'
+ul.appendChild(li);
+ul.appendChild(li2);
+ul.appendChild(li3);
+
+*/
+//(1)迴圈寫法
+let ul = document.createElement('ul');
+body.appendChild(ul);
+
+let tempLi; //for指定物件的參考位置
+for (let i=0; i<3 ; i++){
+    let li = document.createElement('li');
+    li.innerHTML = `第 ${i+1} 個項目內容資料`;
+    ul.appendChild(li);
+
+    if(i==1) tempLi = li; //指定物件要移除的第1個index資料 存入tempLi
+}
+//print:
+    // . 第 1 個項目內容資料 
+    // . 第 2 個項目內容資料
+    // . 第 3 個項目內容資料
+
+//(2)移除第二個項目(第1個index資料)
+ul.removeChild(tempLi);
+//print:
+    // . 第 1 個項目內容資料 
+    // . 第 3 個項目內容資料
+
+//再加一條hr,因為僅一個物件,原23行的hr會消失,於目前這個物件呈現
+//body.appendChild(hr);
+//透過 clone物件的方式 複製一個物件 hr2,呼叫則不影響第一個物件
+let hr2 = hr.cloneNode();
+body.appendChild(hr2);
+
+
+//再clone一個ul
+let ul2 = ul.cloneNode(); //僅clone node 不包含以下成員 所以需要再做for的處理
+body.appendChild(ul2);
+for (let i=0; i<3 ; i++){
+    let li = document.createElement('li');
+    li.innerHTML = `第 ${i+1} 個項目內容資料`;
+    ul2.appendChild(li);
+}
+
+let hr3 = hr.cloneNode(); //再增加一條分隔線
+body.appendChild(hr3);
+
+</script>
+
+

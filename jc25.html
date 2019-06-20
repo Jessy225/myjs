@@ -1,0 +1,60 @@
+<script>
+//新建物件 new出一個object -------------------
+let bike = new Object();
+//新增屬性
+bike.speed = 12;
+bike.gear = 2;
+//定義方法 行為
+bike.upSpeed = function(){
+    this.speed = this.speed * this.gear * 1.2; //this表示該物件
+} 
+bike.downSpeed = function(){
+    this.speed = this.speed * 0.7;
+
+}
+
+document.write(bike.speed + "<br>");
+bike.upSpeed();bike.upSpeed();bike.upSpeed();
+bike.downSpeed();
+document.write(bike.speed + "<hr>");
+
+
+//新建物件  -------------------
+let bike2 = {
+    //定義成員Member 以,隔開
+    speed: 4,
+    gear: 4,
+    upSpeed: function(){
+        this.speed = this.speed * 1.4;
+    }
+};
+
+document.write(bike2.speed + "<br>");
+bike2.upSpeed();bike2.upSpeed();bike2.upSpeed();
+document.write(bike2.speed + "<br>");
+
+//呼叫方法 陣列方式
+bike2['upSpeed']();
+document.write(bike2.speed + "<hr>");
+
+//呼叫方法 陣列方式 變數傳入 (可變動的處理方式)
+let method = 'upSpeed';
+bike2[method]();
+document.write(bike2.speed + "<hr>");
+
+//尋訪擁有成員
+for(let key in bike2){
+    //bike2[key] 查看定義; 若加上bike2[key]() 括號 則是執行方法
+    document.write(key + ":" + bike2[key] + "<br>");
+}
+
+document.write("<hr>");
+
+//查看window物件屬性與方法
+var aa = 123; //使用var定義 則會變成全域變數 (風險較大) ; 可於show出的屬性中查到
+let bb = 456; //區域變數
+for(let key in window){
+    document.write(key + ":" + window[key] + "<br>");
+}
+
+</script>

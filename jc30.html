@@ -1,0 +1,13 @@
+<!-- 如果body擺在,script之後,document.body就引用不到, 因為當下script不知道引用的是哪個document.body,
+除非script中自行創建body : jc28.html作法   -->
+<body>
+    <h1>JC Bif Company</h1>
+</body>
+
+<script>
+    //document.body 使用document既有的文件架構body引用
+    let body = document.body;
+
+    let hr = document.createElement('hr');
+    body.appendChild(hr);
+</script>
