@@ -1,0 +1,91 @@
+<canvas id='canvas' width="480" height="320" style="border: 1px solid black"></canvas>
+<script>
+    let ctx = canvas.getContext('2d');
+    let ballX= 10, ballY=10;
+    let dx = 8, dy = 8; //控制彈跳的速度
+
+    let bg = new Image();
+    bg.src = 'bg.jpg';
+
+    //let ball = new Image();
+
+    let ball1 = new Image();
+    let ball2 = new Image();
+    let ball3 = new Image();
+    let ballImg = [ball1, ball2, ball3];
+    let balls = [];
+
+    //放上背景與球圖片
+    bg.onload = function(){
+        ctx.drawImage(bg,0,0);
+        //ball.src = 'sball.png';
+        ball1.src = 'sball.png';
+        ball2.src = 'sball1.png';
+        ball3.src = 'sball2.png';
+        // ball.onload = function(){
+        //     ctx.drawImage(ball, ballX, ballY);
+        // }
+    }
+
+    //重新繪製
+    function refreshView(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(bg,0,0);
+    
+        for (let i=0; i<balls.length; i++){
+            ctx.drawImage(ballImg[balls[i].img], balls[i].x, balls[i].y);
+        }
+        //ctx.drawImage(ball, ballX, ballY);
+    }
+
+    //往x y位置移動
+    function go(){
+        // //X碰到 左邊 or右邊的邊框,反彈
+        // if (ballX < 0 || ballX + 130 > canvas.width){
+        //     dx *= -1;
+        // }
+
+        // //Y碰到 左邊 or右邊的邊框,反彈
+        // if (ballY < 0 || ballY + 130 > canvas.height){
+        //     dy *= -1;
+        // }
+        // ballX += dx;
+        // ballY += dy;
+
+        //移動自定義球的控制
+        for (let i=0; i<balls.length; i++){
+            moveBall(balls[i]);
+        }
+    }
+
+    //移動自定義球
+    function moveBall(obj){
+        if (obj.x < 0 || obj.x + 48 > canvas.width){
+            obj.dx *= -1;
+        }
+
+        if (obj.y < 0 || obj.y + 48 > canvas.height){
+            obj.dy *= -1;
+        }
+        obj.x += obj.dx;
+        obj.y += obj.dy;
+    }
+
+
+    canvas.onmousedown = function(e){
+        //自創建球物件
+        let ballObj = {
+            x: e.offsetX - 24,
+            y: e.offsetY - 24,
+            dx: 8,
+            dy: 8,
+            img: parseInt(Math.random()*3)
+        };
+        balls[balls.length] = ballObj;
+    };
+
+    setInterval(refreshView, 30); 
+    setInterval(go, 60);
+</script>
+<hr />
+<input type="button" onclick='go()' value='Go!' />

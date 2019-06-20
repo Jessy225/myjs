@@ -1,0 +1,61 @@
+
+<h1 id='head'></h1>
+<hr>
+<canvas id='canvas' width="480" height="320" style="border: 1px solid black"></canvas>
+<input type="button" onclick='clearCanvas()' value='clear' />
+<input type="button" onclick='moveBall()' value='moveball' />
+<script>
+    //簽名
+    head.innerHTML ='Please Sign Here ↓';   //let head = document.write('JC Big Company');
+
+    let ctx = canvas.getContext('2d');  //渲染
+    /*
+    //畫方塊
+    ctx.fillStyle = 'rgb(255,0,0)';     //指定填滿的顏色
+    ctx.fillRect(50,50,100,120);        //畫矩形
+
+    ctx.fillStyle = 'rgba(255,255,0,0.5)'; //指定填滿的顏色;透明效果
+    ctx.fillRect(70,70,200,200);       
+
+    ctx.strokeStyle = 'rgb(0,0,255)';   //邊框
+    ctx.strokeRect(30,30,200,200);
+    */
+
+    //絕對位置畫出邊框
+    let isDrag = false;
+    canvas.onmouseup = function(e){
+        isDrag = false;
+    };
+
+    canvas.onmousedown = function(e){
+        isDrag = true;
+        ctx.strokeStyle = 'rgb(0,0,255)';
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+    };
+
+    canvas.onmousemove = function(e){
+        if(isDrag){
+            ctx.lineTo(e.offsetX,e.offsetY);
+            ctx.stroke();
+        }
+    }; 
+
+    //整塊畫布清除
+    function clearCanvas(){
+        ctx.clearRect(0,0,canvas.width, canvas.height );
+    };
+
+    //匯入圖片
+    let ball = new Image();
+    ball.src = "ball.png";
+    ball.onload = function(){ //呼叫onload 執行動作
+        ctx.drawImage(ball, 180 ,180);
+    }
+    
+    //移動球的位置
+    function moveBall(){
+        ctx.clearRect(180, 180, 180 ,180);
+        ctx.drawImage(ball, 0, 0);
+    }
+</script>
