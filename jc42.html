@@ -1,0 +1,73 @@
+<script src="jcapis.js"></script>
+<script>
+//透過JSON.stringify 轉換為字串
+let person = {
+    name: 'JC',
+    age: 101,
+    weight: 100,
+    bike: [
+        {
+            name: 'bb',
+            speed: 10
+        },
+        {
+            name: 'yy',
+            speed: 20
+        }
+    ],
+    eat: function(){
+        console.log("eat");
+    }
+};
+
+let strPerson =  JSON.stringify(person);
+console.log(strPerson);
+//print: {"name":"JC","age":101,"weight":100}
+
+//透過JSON.stringify 轉換為字串
+
+let person2 = JSON.parse(strPerson);
+console.log(typeof person2);
+for (let key in person2){
+    console.log(key + ":" + person2[key]);
+}
+//print:
+//  object
+//  name:JC
+//  age:101
+//  weight:100
+
+console.log(person === person2);
+//print: false  ->可實現物件複製 兩個不同的實體
+
+console.log(person2.name);
+console.log(person2.bike[1].name);
+person2.name ='Eric';
+person2.bike[1].speed = 200;
+//print: 
+//  JC
+//  yy
+
+console.log(person.name);
+console.log(person.bike[1].speed);
+console.log(person2.name);
+console.log(person2.bike[1].speed);
+//print: 
+//  JC
+//  20
+//  Eric
+//  200
+
+
+
+
+//物件重點在屬性 無法複製方法
+//person2.eat();
+//print: Uncaught TypeError: person2.eat is not a function
+
+//用clone方式則可以引用到
+let person3 = clone(person);
+person3.eat();
+//print: eat
+
+</script>

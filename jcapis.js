@@ -96,3 +96,17 @@ function clone(source){
     }
     return target;
 }
+
+//used in jc41.html
+//轉換getDay紀錄為中文星期
+Date.prototype.getCWeek = function() {
+    let w = this.getDay();
+    let ws = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+    return ws[w];
+};
+
+//轉換getFullYear西元年份紀錄為民國年份
+Date.prototype.getCYear = function() {
+    let y = this.getFullYear()-1911;
+    return y;
+};
