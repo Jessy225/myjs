@@ -1,0 +1,48 @@
+<script src="jcapis.js"></script>
+<script>
+//--方法的繼承關係--
+
+//way:1
+//產生物件,相較建構式的方式,此作法事先定義該類別的方法 
+let bike = {
+    a: 11,
+    b: 22,
+    m1: function(){
+        console.log("bike: m1()" + this.a);
+    }
+}
+
+//相較建構式, 無法用new 方式create eg.建構式使用 let b1 = new bike();
+let b1 = Object.create(bike);
+for (let key in b1){
+    console.log(key + ":" +b1[key]);
+}
+//print:
+//  a:11
+//  b:22
+//  m1:function(){
+//          console.log("bike: m1()" + this.a);
+//      }
+
+
+//way:2
+//或使用另一種建構式方式定義 
+let b2 = bike.constructor(); //new Object()
+for (let key in b2){
+    console.log(key + ":" +b2[key]);
+}
+//沒有印出資訊
+
+//way:3
+//具有方法的屬性 同等於way:1 Object.create 方式
+let b3 = clone(bike);
+for (let key in b3){
+    console.log(key + ":" +b3[key]);
+}
+//print:
+//  a:11
+//  b:22
+//  m1:function(){
+//          console.log("bike: m1()" + this.a);
+//      }
+</script>

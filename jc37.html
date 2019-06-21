@@ -1,0 +1,21 @@
+<script>
+//定義類別建構式
+let f = function(){
+    this.a = 1;
+    this.b = 2;
+}
+
+let obj = new f(); // {a:1, b:2} 物件實體
+console.log(obj.a + ":" + obj.b);
+
+//原型增加屬性
+f.prototype.b = 3;
+f.prototype.c = 4;
+
+console.log(obj.a);
+console.log(obj.b);
+console.log(obj.c);
+//print: 1,2,4 ->若有原有屬性 那增加的屬性就會被覆蓋掉 eg: b=2 而不是3
+
+
+</script>

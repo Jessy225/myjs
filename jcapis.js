@@ -83,10 +83,16 @@ function reset(){
 
 //複製物件
 function clone(source){
-    if (typeof(source) != 'object') return null; //確保傳入的是物件
+    if (source == null || typeof(source) != 'object') return null; //確保有傳入值且是物件
     let target = new Object();
     for (let attr in source) {
-        target[attr] = source[attr];
+        if(typeof source[attr] != 'object'){  //for jc39_v1.html update判斷
+            target[attr] = source[attr];
+        //for jc39_v1.html update判斷---s
+        }else{
+            target[attr] = clone(source[attr]);
+        }
+        //for jc39_v1.html update判斷---e
     }
     return target;
 }

@@ -1,0 +1,28 @@
+<script>
+//建構式是new出來的 主要做屬性初始化   
+//寫法運用於建構式、function ,兩者判別方式: 使用this 為建構式 (如下)
+let bike = function(){
+    console.log("new a bike");
+    this.a = 12;
+    this.b = 34;
+}
+
+let b1 = new bike();
+
+//原型增加,從原型發展的物件則同時具備屬性
+bike.prototype.x = 111;
+console.log(b1.x); //print: 111
+
+bike.prototype.b = 222;
+console.log(b1.b); //print: 34  shadow
+
+
+
+let b2 = new bike();
+b2.a = 56;
+b2.c = 78;
+console.log(b2.a); //print: 56  直接給值 不會被shadow
+console.log(b2.b); //print: 34
+console.log(b2.c); //print: 78
+console.log(b2.x); //print: 111
+</script>
