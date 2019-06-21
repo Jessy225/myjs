@@ -1,0 +1,31 @@
+<script>
+        let xhttp = new XMLHttpRequest;
+        
+        //回呼測試
+        function callback(){
+            let state = xhttp.readyState;
+            let status = xhttp.status;
+            //console.log("back ok: "+state);
+            if (state == 4){
+                if (status == 200){
+                    //顯示呼叫後端產生的亂數
+                    //console.log("data => " + xhttp.responseText);
+                    document.getElementById('result').innerHTML = xhttp.responseText;
+                }
+            }
+        }
+        
+        //由後端產生亂數
+        function sendTest(){
+            let max = document.getElementById('max').value;
+            xhttp.onreadystatechange = callback;
+            xhttp.open("GET", "jc01.php?max= "+ max, true); //傳遞參數給後端php max值
+            xhttp.send();
+        }
+        
+        </script>
+        <h1>JC Big Company</h1>
+        <hr>
+        <input type="number" id="max" />
+        <input type="button" value="Click me" onclick="sendTest()" />
+        <div id="result"></div>
