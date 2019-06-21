@@ -81,3 +81,12 @@ function reset(){
     return a + 'A' + b + 'B';
 }
 
+//複製物件
+function clone(source){
+    if (typeof(source) != 'object') return null; //確保傳入的是物件
+    let target = new Object();
+    for (let attr in source) {
+        target[attr] = source[attr];
+    }
+    return target;
+}

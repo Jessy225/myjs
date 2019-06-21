@@ -1,33 +1,33 @@
-
+<script src="jcapis.js"></script>
 <canvas id='canvas' width="480" height="320" style="border: 1px solid black"></canvas>
 <script>
     
     let ctx = canvas.getContext('2d'); //2d的渲染(ctx)畫布(canvas)
-    //let ballX= 10, ballY=10;
-    //let dx = 8, dy = 8; //控制彈跳的速度
-
     let bg = new Image();
     bg.src = 'bg.jpg';
 
-    //let ball = new Image(); //單一物件
     //可指定多物件隨機產生
     let ball1 = new Image();
     let ball2 = new Image();
     let ball3 = new Image();
     let ballImg = [ball1, ball2, ball3];    //影像物件存成陣列 (可以用 index的方式處理)
     let balls = [];                         //實體物件
+    //自創建球物件
+    let ballObj = {
+        x: 0,
+        y: 0,
+        dx: 8,
+        dy: 8,
+        img: 0
+    };
+
 
     //載入影像資料
     bg.onload = function(){
         ctx.drawImage(bg,0,0);
-        //ball.src = 'sball.png'; //單一物件圖片
         ball1.src = 'sball.png';
         ball2.src = 'sball1.png';
         ball3.src = 'sball2.png';
-        //單一物件的圖片控制
-        // ball.onload = function(){
-        //     ctx.drawImage(ball, ballX, ballY);
-        // }
     }
 
     //重新繪製(fps頻率處理) 
@@ -39,18 +39,10 @@
         for (let i=0; i<balls.length; i++){
             ctx.drawImage(ballImg[balls[i].img], balls[i].x, balls[i].y);
         }
-        //ctx.drawImage(ball, ballX, ballY);
     }
 
     //往x y位置移動
     function go(){
-        // X碰到 左邊 or右邊的邊框,反彈
-        // if (ballX < 0 || ballX + 130 > canvas.width) dx *= -1;
-        // Y碰到 左邊 or右邊的邊框,反彈
-        // if (ballY < 0 || ballY + 130 > canvas.height) dy *= -1;
-        // ballX += dx;
-        // ballY += dy;
-
         //移動自定義球的控制
         for (let i=0; i<balls.length; i++){
             moveBall(balls[i]);
@@ -72,14 +64,11 @@
 
     //點擊一次產生一顆碰撞球
     canvas.onmousedown = function(e){
-        //自創建球物件
-        let ballObj = {
-            x: e.offsetX - 24,
-            y: e.offsetY - 24,
-            dx: 8,
-            dy: 8,
-            img: parseInt(Math.random()*3)
-        };
+        //差異jc35.html 利用clone方式複製物件
+        let ballObject = clone(ballObj);
+        ballObject.x = e.offsetX;
+        ballObject.y = e.offsetY;
+        ballObject.img = parseInt(Math.random()*3);
 
         //物件存成參考, 交給陣列
         balls[balls.length] = ballObj;

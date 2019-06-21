@@ -1,0 +1,25 @@
+<script>
+//新增物件
+let obj = {
+    name: 'JC',
+    age:101
+}
+
+document.write(obj.name + ":" + obj.age+ "<br>");
+
+//呼叫建構式,產生物件實體
+//let obj1 = obj.constructor();
+
+//命名新物件
+let obj1 = new Object();
+document.write(obj1.name + ":" + obj1.age+ "<br>");
+//print: undefined:undefined 因為只是產生實體 沒有複製attr過來
+
+//從原物件的內容中for in進obj1
+for (let attr in obj){
+    obj1[attr] = obj[attr];
+}
+document.write(obj1.name + ":" + obj1.age+ "<br>");
+
+
+</script>
