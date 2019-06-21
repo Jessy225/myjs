@@ -37,9 +37,14 @@
 
     let isClickDisable = false;
     $('#go').click(function(){
-        isClickDisable = !isClickDisable;       //按下去反向
-        $(this).attr  //類別用 . 開頭
-        $('.inputText').val('Hello, world');    //類別用 . 開頭
+        isClickDisable = !isClickDisable;           //按下去反向
+        $(this).attr("disabled",isClickDisable);    //類別用 . 開頭
+        setTimeout(toClickEnable,3*1000);
+        $('.inputText').val('Hello, world');        //類別用 . 開頭
     });
 
+    function toClickEnable(){
+        isClickDisable = false;
+        $('#go').attr('disabled',isClickDisable);
+    }
 </script>
