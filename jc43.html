@@ -1,0 +1,48 @@
+<script>
+//時間漸進控制
+let delay = 3000, i=1;
+
+function doThing(){
+    if (delay <= 10) return;
+    console.log(i++);
+    setTimeout(doThing, delay);
+    delay -= delay/2;
+}
+//doThing();
+
+
+
+//時間漸慢控制
+let delay2 = 1000, j=20;
+
+function doThing2(){
+    if (delay2 >= 6000) return;
+    console.log(j--);
+    setTimeout(doThing2, delay2);
+    delay2 += delay2/2;
+}
+//doThing2();
+
+
+//時間漸進後變慢
+let delay3 = 3000, k=1;
+
+function doThing3(){
+    if (delay3 <= 10) {
+        doThing4();
+        return;
+    }
+    console.log(k++);
+    setTimeout(doThing, delay3);
+    delay3 -= delay3/2;
+}
+
+function doThing4(){
+    if (delay3 >= 6000) return;
+    console.log(k--);
+    setTimeout(doThing4, delay3);
+    delay3 += delay3/2;
+}
+doThing3();
+
+</script>

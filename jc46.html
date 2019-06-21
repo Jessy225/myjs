@@ -1,0 +1,58 @@
+<script src="jcapis.js"></script>
+<script>
+    //跳出視窗
+    function test1(){
+        window.open("", "myWindow", "width=200, height=100");
+    }
+
+    //查看語系、 瀏覽器名稱...等
+    console.log(navigator.language);    // print: zh-TW
+    console.log(navigator.appName);     // print: Netscape
+
+    function gotoBacked(){
+        let account = document.getElementById('account').value;
+        let passwd1 = document.getElementById('passwd1').value;
+        let passwd2 = document.getElementById('passwd2').value;
+        let twid = document.getElementById('twid').value;
+        
+        let ret = true;
+
+        if (account.length <= 0 || passwd1.length <= 0 ||
+            passwd2.length <= 0 || twid.length <= 0 ) {
+            ret = false;
+            alert('length error');
+        }
+
+        if(!checkTWId(twid)){
+            ret = false;
+        }else{
+            ret = true;
+        }
+        return ret;
+    }
+
+    //檢查是否相同密碼
+    function checkSamePasswd(){
+        let passwd1 = document.getElementById('passwd1').value;
+        let passwd2 = document.getElementById('passwd2').value;
+        if (passwd1.length > 0 && passwd2.length > 0){
+            if(passwd1 != passwd2){
+                alert('Password is not the same!!');
+                document.getElementById('passwd2').value = '';
+            }
+        }
+    }
+</script>
+
+<input type="button" onclick="test1()" value="Test1" /><br>
+
+<form id='myform' action="test1.php" onsubmit="return gotoBacked();"
+enctype="multipart/form-data" method='post'>
+    *Account: <input type="text" id="account" /><br>
+    *Password1: <input type="password" id="passwd1" onblur="checkSamePasswd()" /><br>
+    *Password2: <input type="password" id="passwd2" onblur="checkSamePasswd()" /><br>
+    *TW Id: <input type="text" id="twid" /><br>
+    Memo: <textarea id="memo"></textarea><br>
+    <input type="file" /><br><br>
+    <input type="submit" value="register" />
+</form>
