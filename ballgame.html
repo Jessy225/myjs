@@ -1,9 +1,16 @@
-<h1 id='head'></h1>
-<hr>
-<canvas id='canvas' width="480" height="320" style="border: 1px solid black"></canvas>
+<font face="微軟正黑體"><h1 id='head'></h1></font>
+<canvas id='canvas' width="480" height="320" ></canvas>
 <script>
+//作業 打磚塊
+head.innerHTML ='打磚塊';  
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d"); //渲染
+
+//背景圖與球
+let bg = new Image();
+let ball = new Image();
+bg.src = 'ballgame.jpg';
+ball.src = 'ball00.png';
 
 
 //球彈射角度設定
@@ -89,18 +96,15 @@ function collisionDetection() {
 
 //球
 function drawBall() {
-  ctx.beginPath();
-  ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-  ctx.fillStyle = "#0095DD";
-  ctx.fill();
-  ctx.closePath();
+  ctx.drawImage(ball, x-10, y, 20, 20); 
 }
+
 
 //控制軸
 function drawPaddle() {
   ctx.beginPath();
   ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = "#444444";
   ctx.fill();
   ctx.closePath();
 }
@@ -127,23 +131,20 @@ function drawBricks() {
 //分數列
 function drawScore() {
   ctx.font = "16px Arial";
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "brown";
   ctx.fillText("Score: "+score, 8, 20);
 }
 
 
 function draw() {
-let img=new Image()
-img.src="http://pic02.1sucai.com/190516/330693-1Z5161J15834-lp.jpg"
-ctx.drawImage(img,0,0);
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.drawImage(bg, 0, 0); //增加背景
   drawBricks();
   drawBall();
   drawPaddle();
   drawScore();
   collisionDetection();
-
+  
   if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
     dx = -dx;
   }
@@ -155,7 +156,8 @@ ctx.drawImage(img,0,0);
       dy = -dy;
     }
     else {
-        alert("GAME OVER");
+        //alert("GAME OVER");
+        console.log("GAME OVER");
         document.location.reload();
     }
   }
